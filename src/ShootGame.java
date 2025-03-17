@@ -133,7 +133,7 @@ public class ShootGame extends JPanel {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Fly");
+        JFrame frame = new JFrame("FlyingFire");
         ShootGame game = new ShootGame(); // 面板对象
         frame.add(game); // 将面板添加到 JFrame 中
         frame.setSize(WIDTH, HEIGHT); // 设置大小
@@ -142,6 +142,7 @@ public class ShootGame extends JPanel {
         frame.setIconImage(new ImageIcon("images/icon.jpg").getImage()); // 设置窗体的图标
         frame.setLocationRelativeTo(null); // 设置窗体初始位置
         frame.setVisible(true); // 尽快调用 paint
+        frame.setResizable(false); // 设置窗体不可调整大小
 
         game.action(); // 启动执行
     }
