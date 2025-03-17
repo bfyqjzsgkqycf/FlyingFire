@@ -1,5 +1,3 @@
-# FlyingFire Game README
-
 ## 1. Introduction
 FlyingFire is an exciting shooting game developed in Java. The game features a hero plane that can shoot bullets to destroy enemy planes and obtain rewards. Players can control the hero plane with the mouse, and the game has different states such as start, running, pause, and game over.
 
