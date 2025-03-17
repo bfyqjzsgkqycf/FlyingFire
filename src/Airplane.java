@@ -1,12 +1,10 @@
-package com.tarena.fly;
-
 import java.util.Random;
 
 /**
  * 敌飞机: 是飞行物，也是敌人
  */
 public class Airplane extends FlyingObject implements Enemy {
-    private int speed = 3;  //移动步骤
+    private int speed = 3; // 移动步骤
 
     /**
      * 初始化数据
@@ -29,7 +27,7 @@ public class Airplane extends FlyingObject implements Enemy {
     }
 
     /**
-     * //越界处理
+     * 越界处理
      */
     @Override
     public boolean outOfBounds() {

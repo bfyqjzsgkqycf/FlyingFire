@@ -1,7 +1,5 @@
-package com.tarena.fly;
-
 /**
- * 敌人，可以有分数
+ * 敌人, 可以有分数
  */
 public interface Enemy {
     /**

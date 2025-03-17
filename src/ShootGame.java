@@ -1,5 +1,3 @@
-package com.tarena.fly;
-
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -46,20 +44,17 @@ public class ShootGame extends JPanel {
     private Bullet[] bullets = {}; // 子弹数组
     private Hero hero = new Hero(); // 英雄机
 
-    static { // 静态代码块，初始化图片资源
+    static { // 静态代码块, 初始化图片资源
         try {
-            background = ImageIO.read(ShootGame.class
-                    .getResource("background.png"));
+            background = ImageIO.read(ShootGame.class.getResource("background.png"));
             start = ImageIO.read(ShootGame.class.getResource("start.png"));
-            airplane = ImageIO
-                    .read(ShootGame.class.getResource("airplane.png"));
+            airplane = ImageIO.read(ShootGame.class.getResource("airplane.png"));
             bee = ImageIO.read(ShootGame.class.getResource("bee.png"));
             bullet = ImageIO.read(ShootGame.class.getResource("bullet.png"));
             hero0 = ImageIO.read(ShootGame.class.getResource("hero0.png"));
             hero1 = ImageIO.read(ShootGame.class.getResource("hero1.png"));
             pause = ImageIO.read(ShootGame.class.getResource("pause.png"));
-            gameover = ImageIO
-                    .read(ShootGame.class.getResource("gameover.png"));
+            gameover = ImageIO.read(ShootGame.class.getResource("gameover.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -140,13 +135,13 @@ public class ShootGame extends JPanel {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Fly");
         ShootGame game = new ShootGame(); // 面板对象
-        frame.add(game); // 将面板添加到JFrame中
+        frame.add(game); // 将面板添加到 JFrame 中
         frame.setSize(WIDTH, HEIGHT); // 设置大小
         frame.setAlwaysOnTop(true); // 设置其总在最上
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 默认关闭操作
         frame.setIconImage(new ImageIcon("images/icon.jpg").getImage()); // 设置窗体的图标
         frame.setLocationRelativeTo(null); // 设置窗体初始位置
-        frame.setVisible(true); // 尽快调用paint
+        frame.setVisible(true); // 尽快调用 paint
 
         game.action(); // 启动执行
     }
@@ -175,7 +170,7 @@ public class ShootGame extends JPanel {
 
             @Override
             public void mouseExited(MouseEvent e) { // 鼠标退出
-                if (state == RUNNING) { // 游戏未结束，则设置其为暂停
+                if (state == RUNNING) { // 游戏未结束, 则设置其为暂停
                     state = PAUSE;
                 }
             }
@@ -186,7 +181,7 @@ public class ShootGame extends JPanel {
                     case START:
                         state = RUNNING; // 启动状态下运行
                         break;
-                    case GAME_OVER: // 游戏结束，清理现场
+                    case GAME_OVER: // 游戏结束, 清理现场
                         flyings = new FlyingObject[0]; // 清空飞行物
                         bullets = new Bullet[0]; // 清空子弹
                         hero = new Hero(); // 重新创建英雄机
@@ -211,7 +206,7 @@ public class ShootGame extends JPanel {
                     outOfBoundsAction(); // 删除越界飞行物及子弹
                     checkGameOverAction(); // 检查游戏结束
                 }
-                repaint(); // 重绘，调用paint()方法
+                repaint(); // 重绘, 调用 paint() 方法
             }
 
         }, intervel, intervel);
@@ -224,7 +219,7 @@ public class ShootGame extends JPanel {
      */
     public void enterAction() {
         flyEnteredIndex++;
-        if (flyEnteredIndex % 40 == 0) { // 400毫秒生成一个飞行物--10*40
+        if (flyEnteredIndex % 40 == 0) { // 400毫秒生成一个飞行物--10 * 40
             FlyingObject obj = nextOne(); // 随机生成一个飞行物
             flyings = Arrays.copyOf(flyings, flyings.length + 1);
             flyings[flyings.length - 1] = obj;
@@ -296,7 +291,7 @@ public class ShootGame extends JPanel {
         }
         flyings = Arrays.copyOf(flyingLives, index); // 将不越界的飞行物都留着
 
-        index = 0; // 索引重置为0
+        index = 0; // 索引重置为 0
         Bullet[] bulletLives = new Bullet[bullets.length];
         for (int i = 0; i < bullets.length; i++) {
             Bullet b = bullets[i];
@@ -362,11 +357,11 @@ public class ShootGame extends JPanel {
 
             flyings = Arrays.copyOf(flyings, flyings.length - 1); // 删除最后一个飞行物(即被击中的)
 
-            // 检查one的类型(敌人加分，奖励获取)
-            if (one instanceof Enemy) { // 检查类型，是敌人，则加分
+            // 检查 one 的类型(敌人加分, 奖励获取)
+            if (one instanceof Enemy) { // 检查类型, 是敌人, 则加分
                 Enemy e = (Enemy) one; // 强制类型转换
                 score += e.getScore(); // 加分
-            } else { // 若为奖励，设置奖励
+            } else { // 若为奖励, 设置奖励
                 Award a = (Award) one;
                 int type = a.getType(); // 获取奖励类型
                 switch (type) {
